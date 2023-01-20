@@ -3,7 +3,7 @@ package com.algaworks.ecommerce.iniciandocomjpa;
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.util.regex.Matcher;
@@ -22,7 +22,7 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
         Produto produtoSalvo = entityManager.find(Produto.class, 1);
 
         Assert.assertNotNull(produto);
-        Assert.assertEquals("Tablet",produtoSalvo.getNome());
+        Assert.assertEquals("Tablet", produtoSalvo.getNome());
     }
 
     @Test

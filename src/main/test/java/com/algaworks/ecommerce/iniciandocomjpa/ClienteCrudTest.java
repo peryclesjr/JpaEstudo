@@ -7,28 +7,29 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 
+
 public class ClienteCrudTest extends EntityManagerTest {
 
+    @Order(1)
     @Test
     public void insertClient(){
-        Cliente cliente = new Cliente(2, "Pérycles Júnior");
-        Cliente cliente2 = new Cliente(3, "Pedro Pérycles");
+        Cliente cliente = new Cliente(3, "Pérycles Júnior");
 
         entityManager.getTransaction().begin();
         entityManager.persist(cliente);
-        entityManager.persist(cliente2);
         entityManager.getTransaction().commit();
         entityManager.clear();
 
-        Cliente clienteconsulta = entityManager.find(Cliente.class, 2);
-        Cliente clienteconsulta2 = entityManager.find(Cliente.class, 3);
+        Cliente clienteconsulta = entityManager.find(Cliente.class, 3);
 
         Assert.assertNotNull(clienteconsulta);
-        Assert.assertNotNull(clienteconsulta2);
+
     }
+
+    @Order(2)
     @Test
     public void deleteClient(){
-        Cliente cliente = new Cliente(2, "Pérycles Júnior");
+        Cliente cliente = entityManager.find(Cliente.class, 2);
 
         entityManager.getTransaction().begin();
         entityManager.remove(cliente);
@@ -40,9 +41,11 @@ public class ClienteCrudTest extends EntityManagerTest {
         Assert.assertNull(cliente1);
 
     }
+
+
     @Test
     public void updateClient(){
-        Cliente cliente = entityManager.find(Cliente.class, 3);
+        Cliente cliente = entityManager.find(Cliente.class, 1);
         cliente.setNome("Karinne Muniz");
 
         entityManager.getTransaction().begin();
@@ -50,19 +53,17 @@ public class ClienteCrudTest extends EntityManagerTest {
         entityManager.getTransaction().commit();
 
         entityManager.clear();
-        Cliente cliente1 = entityManager.find(Cliente.class, 3);
+        Cliente cliente1 = entityManager.find(Cliente.class, 1);
 
-        Assert.assertEquals("", cliente1.getNome());
+        Assert.assertEquals("Karinne Muniz", cliente1.getNome());
 
     }
 
 
     @Test
     public void consultaClient(){
-        Cliente cliente = entityManager.find(Cliente.class, 2);
-
-
-        Assert.assertEquals("Pérycles Júnior", cliente.getNome());
+        Cliente cliente = entityManager.find(Cliente.class, 1);
+        Assert.assertEquals("Karinne Muniz", cliente.getNome());
 
     }
 }
