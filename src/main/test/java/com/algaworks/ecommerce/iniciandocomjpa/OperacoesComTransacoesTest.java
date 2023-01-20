@@ -2,11 +2,13 @@ package com.algaworks.ecommerce.iniciandocomjpa;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Produto;
-import org.junit.Assert;
+
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.util.regex.Matcher;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class OperacoesComTransacoesTest extends EntityManagerTest {
 
@@ -21,8 +23,8 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
 
         Produto produtoSalvo = entityManager.find(Produto.class, 1);
 
-        Assert.assertNotNull(produto);
-        Assert.assertEquals("Tablet", produtoSalvo.getNome());
+        assertNotNull(produto);
+        assertEquals("Tablet", produtoSalvo.getNome());
     }
 
     @Test
@@ -38,12 +40,11 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
 
         Produto produtoSalvo = entityManager.find(Produto.class, 2);
 
-        Assert.assertNotNull(produtoSalvo);
-        Assert.assertNotEquals("Kindle",produtoSalvo.getNome());
-        Assert.assertEquals("Tablet",produtoSalvo.getNome());
-        System.out.println(produtoSalvo.getPreco());
-        System.out.println(produtoSalvo.getPreco().equals(new BigDecimal(5900.00)));
-        Assert.assertTrue(new BigDecimal(5900.00).compareTo(produtoSalvo.getPreco())==0);
+        assertNotNull(produtoSalvo);
+        assertNotEquals("Kindle",produtoSalvo.getNome());
+        assertEquals("Tablet",produtoSalvo.getNome());
+        assertTrue(new BigDecimal(5900.00).compareTo(produtoSalvo.getPreco())==0);
+
 
 
     }
@@ -59,7 +60,7 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
 
         Produto produtoSalvo = entityManager.find(Produto.class, 3);
 
-        Assert.assertNull(produtoSalvo);
+        assertNull(produtoSalvo);
     }
 
     @Test
@@ -75,11 +76,10 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
 
         Produto produtoSalvo = entityManager.find(Produto.class, 4);
 
-        Assert.assertNotNull(produtoSalvo);
-        Assert.assertNotEquals("Kindle",produtoSalvo.getNome());
-        Assert.assertEquals("Tablet",produtoSalvo.getNome());
-        System.out.println(produtoSalvo.getPreco());
-        Assert.assertTrue(new BigDecimal(9900.00).compareTo(produtoSalvo.getPreco())==0);
+        assertNotNull(produtoSalvo);
+        assertNotEquals("Kindle",produtoSalvo.getNome());
+        assertEquals("Tablet",produtoSalvo.getNome());
+        assertTrue(new BigDecimal(9900.00).compareTo(produtoSalvo.getPreco())==0);
 
 
     }
@@ -96,11 +96,10 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
 
         Produto produtoSalvo = entityManager.find(Produto.class, 4);
 
-        Assert.assertNotNull(produtoSalvo);
-        Assert.assertNotEquals("Kindle",produtoSalvo.getNome());
-        Assert.assertEquals("Tablet",produtoSalvo.getNome());
-        System.out.println(produtoSalvo.getPreco());
-        Assert.assertTrue(new BigDecimal(9900.00).compareTo(produtoSalvo.getPreco())==0);
+        assertNotNull(produtoSalvo);
+        assertNotEquals("Kindle",produtoSalvo.getNome());
+        assertEquals("Tablet",produtoSalvo.getNome());
+        assertTrue(new BigDecimal(9900.00).compareTo(produtoSalvo.getPreco())==0);
 
 
     }

@@ -2,10 +2,11 @@ package com.algaworks.ecommerce.iniciandocomjpa;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Cliente;
-import org.junit.Assert;
+
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ClienteCrudTest extends EntityManagerTest {
@@ -22,7 +23,7 @@ public class ClienteCrudTest extends EntityManagerTest {
 
         Cliente clienteconsulta = entityManager.find(Cliente.class, 3);
 
-        Assert.assertNotNull(clienteconsulta);
+        assertNotNull(clienteconsulta);
 
     }
 
@@ -38,7 +39,7 @@ public class ClienteCrudTest extends EntityManagerTest {
         entityManager.clear();
         Cliente cliente1 = entityManager.find(Cliente.class, 2);
 
-        Assert.assertNull(cliente1);
+        assertNull(cliente1);
 
     }
 
@@ -55,7 +56,7 @@ public class ClienteCrudTest extends EntityManagerTest {
         entityManager.clear();
         Cliente cliente1 = entityManager.find(Cliente.class, 1);
 
-        Assert.assertEquals("Karinne Muniz", cliente1.getNome());
+        assertEquals("Karinne Muniz", cliente1.getNome());
 
     }
 
@@ -63,7 +64,7 @@ public class ClienteCrudTest extends EntityManagerTest {
     @Test
     public void consultaClient(){
         Cliente cliente = entityManager.find(Cliente.class, 1);
-        Assert.assertEquals("Karinne Muniz", cliente.getNome());
+        assertEquals("Karinne Muniz", cliente.getNome());
 
     }
 }
