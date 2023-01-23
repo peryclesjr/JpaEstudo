@@ -4,21 +4,22 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Data
 @Entity
-@Table(name = "cliente")
-public class Cliente {
+@Table(name = "categoria")
+public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
-    @SequenceGenerator(name= "seq", sequenceName = "cliente_sequence",initialValue = 4)
+    @SequenceGenerator(name= "seq", sequenceName = "categoria_sequence",initialValue = 4)
     private Integer id;
 
     private String nome;
-    @Enumerated(EnumType.STRING)
-    private SexoCliente sexoCliente;
+
+    @Column(name= "catwegoria_pai_id")
+    private  Integer categiraPaiId;
 
 }

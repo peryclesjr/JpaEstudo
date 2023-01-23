@@ -3,6 +3,7 @@ package com.algaworks.ecommerce.iniciandocomjpa;
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Cliente;
 
+import com.algaworks.ecommerce.model.SexoCliente;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -14,14 +15,14 @@ public class ClienteCrudTest extends EntityManagerTest {
     @Order(1)
     @Test
     public void insertClient(){
-        Cliente cliente = new Cliente(3, "Pérycles Júnior");
+        Cliente cliente = new Cliente( null,"Pérycles Júnior", SexoCliente.MASCULINO);
 
         entityManager.getTransaction().begin();
         entityManager.persist(cliente);
         entityManager.getTransaction().commit();
         entityManager.clear();
 
-        Cliente clienteconsulta = entityManager.find(Cliente.class, 3);
+        Cliente clienteconsulta = entityManager.find(Cliente.class, cliente.getId());
 
         assertNotNull(clienteconsulta);
 

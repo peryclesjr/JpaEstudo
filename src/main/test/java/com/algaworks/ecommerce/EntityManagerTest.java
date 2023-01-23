@@ -19,7 +19,6 @@ public class EntityManagerTest {
     public static void setUpBeforeClass() {
         entityManagerFactory = Persistence
                  .createEntityManagerFactory("Ecommerce-PU");
-        System.out.println("aqui");
     }
     @AfterAll
     public static void tearDownafterClass() {

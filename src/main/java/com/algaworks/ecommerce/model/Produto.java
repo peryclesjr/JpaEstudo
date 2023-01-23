@@ -2,19 +2,19 @@ package com.algaworks.ecommerce.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
+@Table(name = "produto")
 public class Produto {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+    @SequenceGenerator(name= "seq", sequenceName = "produto_sequence",initialValue = 4)
     @EqualsAndHashCode.Include
     private  Integer id;
     @EqualsAndHashCode.Include

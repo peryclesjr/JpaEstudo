@@ -29,7 +29,7 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
 
     @Test
     public void insertProduto(){
-        Produto produto = new Produto( 2, "Tablet",
+        Produto produto = new Produto( null, "Tablet",
                 "Sanmung tablet S8", new BigDecimal(5900.00));
         entityManager.getTransaction().begin();
         entityManager.persist(produto);
@@ -38,7 +38,7 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
 
         entityManager.clear();
 
-        Produto produtoSalvo = entityManager.find(Produto.class, 2);
+        Produto produtoSalvo = entityManager.find(Produto.class, produto.getId());
 
         assertNotNull(produtoSalvo);
         assertNotEquals("Kindle",produtoSalvo.getNome());
@@ -65,6 +65,10 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
 
     @Test
     public void insertProdutoComMerge(){
+        //se passar null ou outro valor a sequence se inicia em 4.
+        // o merge dá pau....
+        // se colocarmos 100 no construtor e pegar o valor no bnco virá 4 logo não encontra.
+        //tomar cuidado
         Produto produto = new Produto( 4, "Tablet",
                 "Sanmung tablet S8 Ultra", new BigDecimal(9900.00));
         entityManager.getTransaction().begin();
@@ -74,7 +78,7 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
 
         entityManager.clear();
 
-        Produto produtoSalvo = entityManager.find(Produto.class, 4);
+        Produto produtoSalvo = entityManager.find(Produto.class, produto.getId());
 
         assertNotNull(produtoSalvo);
         assertNotEquals("Kindle",produtoSalvo.getNome());
@@ -94,7 +98,7 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
 
         entityManager.clear();
 
-        Produto produtoSalvo = entityManager.find(Produto.class, 4);
+        Produto produtoSalvo = entityManager.find(Produto.class, produto.getId());
 
         assertNotNull(produtoSalvo);
         assertNotEquals("Kindle",produtoSalvo.getNome());
