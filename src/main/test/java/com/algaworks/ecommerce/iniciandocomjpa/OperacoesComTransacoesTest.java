@@ -30,7 +30,7 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
     @Test
     public void insertProduto(){
         Produto produto = new Produto( null, "Tablet",
-                "Sanmung tablet S8", new BigDecimal(5900.00));
+                "Sanmung tablet S8", new BigDecimal(5900.00), null, null, null);
         entityManager.getTransaction().begin();
         entityManager.persist(produto);
         entityManager.getTransaction().commit();
@@ -70,7 +70,7 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
         // se colocarmos 100 no construtor e pegar o valor no bnco virá 4 logo não encontra.
         //tomar cuidado
         Produto produto = new Produto( 4, "Tablet",
-                "Sanmung tablet S8 Ultra", new BigDecimal(9900.00));
+                "Sanmung tablet S8 Ultra", new BigDecimal(9900.00), null, null, null);
         entityManager.getTransaction().begin();
         entityManager.merge(produto);
         entityManager.getTransaction().commit();
@@ -90,8 +90,8 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
 
     @Test
     public void mostrarDiferencaProdutoComMergePersist(){
-        Produto produto = new Produto( 4, "Tablet",
-                "Sanmung tablet S8 Ultra", new BigDecimal(9900.00));
+        Produto produto = new Produto ( 4, "Tablet",
+                "Sanmung tablet S8 Ultra", new BigDecimal(9900.00), null, null, null);
         entityManager.getTransaction().begin();
         entityManager.merge(produto);
         entityManager.getTransaction().commit();

@@ -10,7 +10,7 @@ public class MapeandoEnumeracoesTest extends EntityManagerTest {
 
     @Test
     public void testEnum(){
-        Cliente cliente = new Cliente(5, "Pedro Percycles", SexoCliente.MASCULINO);
+        Cliente cliente = new Cliente(null, "Pedro Percycles", SexoCliente.MASCULINO, null);
         entityManager.getTransaction().begin();
         entityManager.persist(cliente);
         entityManager.getTransaction().commit();
@@ -18,7 +18,7 @@ public class MapeandoEnumeracoesTest extends EntityManagerTest {
         //clear memory for search in DB
         entityManager.clear();
 
-        Cliente consulaCliente = entityManager.find(Cliente.class, 5);
+        Cliente consulaCliente = entityManager.find(Cliente.class, cliente.getId());
 
         Assertions.assertEquals(cliente.getSexoCliente(), consulaCliente.getSexoCliente());
 

@@ -17,7 +17,8 @@ public class Estoque {
     @SequenceGenerator(name= "seq", sequenceName = "estoque_sequence",initialValue = 4)
     @EqualsAndHashCode.Include
     private Integer Id;
-    @Column(name = "")
-    private Integer produtoId;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "produto_id")
+    private Produto produto;
     private Integer quatidade;
 }

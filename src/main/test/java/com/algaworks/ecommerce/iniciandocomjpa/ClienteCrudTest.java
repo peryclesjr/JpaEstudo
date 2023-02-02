@@ -15,7 +15,7 @@ public class ClienteCrudTest extends EntityManagerTest {
     @Order(1)
     @Test
     public void insertClient(){
-        Cliente cliente = new Cliente( null,"Pérycles Júnior", SexoCliente.MASCULINO);
+        Cliente cliente = new Cliente( null,"Pérycles Júnior", SexoCliente.MASCULINO, null);
 
         entityManager.getTransaction().begin();
         entityManager.persist(cliente);

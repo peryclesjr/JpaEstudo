@@ -15,9 +15,11 @@ public class PagamentoCartao {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
     @SequenceGenerator(name= "seq", sequenceName = "pagamento_cartao_sequence",initialValue = 4)
     private Integer id;
-    private Integer pedidoId;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "pedido_id")
+    private Pedido pedido;
     @Enumerated(EnumType.STRING)
     private StatusPagamento status;
-    private Integer numero;
+    private String numero;
 
 }

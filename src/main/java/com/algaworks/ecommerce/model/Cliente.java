@@ -3,6 +3,7 @@ package com.algaworks.ecommerce.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -20,5 +21,8 @@ public class Cliente {
     private String nome;
     @Enumerated(EnumType.STRING)
     private SexoCliente sexoCliente;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidoList;
 
 }

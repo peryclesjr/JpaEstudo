@@ -17,8 +17,9 @@ public class NotaFiscal {
     @SequenceGenerator(name= "seq", sequenceName = "nota_fiscal_sequence",initialValue = 4)
     private Integer id;
 
-    @Column(name = "pedido_id")
-    private Integer pedidoId;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "pedido_id")
+    private Pedido pedido;
     private String xml;
     private Date dataEmissao;
 

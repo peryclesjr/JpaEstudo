@@ -3,6 +3,7 @@ package com.algaworks.ecommerce.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -13,13 +14,18 @@ import javax.persistence.*;
 public class Categoria {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
-    @SequenceGenerator(name= "seq", sequenceName = "categoria_sequence",initialValue = 4)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String nome;
 
-    @Column(name= "catwegoria_pai_id")
-    private  Integer categiraPaiId;
+    @ManyToOne
+    @JoinColumn(name= "categoria_pai_id")
+    private  Categoria categoiraPai;
+
+    @OneToMany(mappedBy = "categoiraPai")
+    private List<Categoria> categorias;
+    @ManyToMany(mappedBy = "categorias")
+    private List<Produto> produtos;
 
 }
